@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns=[
     #최상위 주소
-    path('',views.post_list),
-    path('<int:pk>/',views.post_detail)
+    path('',views.post_list,name='post_list'),
+    path('<int:pk>/',views.post_detail,name='post_detail')
 ]
