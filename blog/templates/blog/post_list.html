@@ -1,12 +1,5 @@
-<!doctype html>
-<head>
-    <meta charset="utf-8">
-
-    <title></title>
-</head>
-<body>
-    <h1>Askdjango</h1>
-    <p>안녕하세요.</p>
+{% extends 'blog/layout.html' %}
+{% block content %}
     <form action="" method="get">
         <input type="text" name="q" value="{{ q }}" />
         <input type="submit" value="검색"/>
@@ -28,4 +21,4 @@
     <ul>
         <li>http://127.0.0.1:8000/blog/ 주소로 접속해보세요.</li>
     </ul>
-</body>
+{% endblock %}
