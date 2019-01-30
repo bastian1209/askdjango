@@ -29,7 +29,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('',root,name='root'),
     # path('',RedirectView.as_view(pattern_name='blog:post_list')),
-    path('',lambda r: redirect('blog:post_list')),
+    path('',lambda r: redirect('blog:post_list'),name='root'),
     path('admin/',admin.site.urls),
     path('blog/', include('blog.urls',namespace='blog')),
     path('dojo/', include('dojo.urls',namespace='dojo')),
