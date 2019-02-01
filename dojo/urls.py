@@ -19,4 +19,5 @@ urlpatterns=[
     url(r'^cbv/post_list3/$', views_cbv.post_list3),
     url(r'^cbv/excel_downloader/$', views_cbv.excel_downloader),
     path('new/',views.post_new),
+    path('<int:id>/edit/',views.post_edit),
 ]
