@@ -6,7 +6,7 @@
             <p>django 처음 해보는 부트스트랩</p>
             <p>
                 <a class="btn btn-lg btn-primary" href="http://facebook.com/groups/askdjango">
-                    Askdjango 페이스북 그룹 &raquo;
+                    Askdjango 페이스북 그룹  &raquo;
                 </a>
             </p>
 
@@ -19,6 +19,7 @@
                         <li>http://127.0.0.1:8000/blog/ 주소로 접속해보세요.</li>
                     </ul>
                 </div>
+                <a href="{% url 'blog:post_new' %}" class="btn btn-primary pull-right">New Post</a>
                 <p>
                     <form action="" method="get">
                         <input type="text" name="q" value="{{ q }}" />
