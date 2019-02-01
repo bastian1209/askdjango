@@ -9,8 +9,9 @@ def post_new(request):
         form=PostForm(request.POST,request.FILES)
         # is_valid : 모든 vaildator 결과 참이어야 참
         if form.is_valid():
-            post=form.save()
-
+            post=form.save(commit=False)
+            post.ip=request.META['REMOTE_ADDR']
+            post.save()
             return redirect('/dojo/')
 
     else:
