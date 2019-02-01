@@ -1,4 +1,5 @@
 from django import forms
+from .models import Post
 
 
 def min_length_3_validator(value):
@@ -9,3 +10,26 @@ def min_length_3_validator(value):
 class PostForm(forms.Form):
     title = forms.CharField(validators=[min_length_3_validator])
     content = forms.CharField(widget=forms.Textarea)
+
+    def save(self,commit=True):
+        # 1
+        # post = Post()
+        # post.title = form.cleaned_data['title']
+        # post.content = form.cleaned_data['content']
+        # post.save()
+
+        # 2
+        # post=Post(title=form.cleaned_data['title'],
+        #           content=form.cleaned_data['content'])
+        # post.save()
+
+        # 3
+        # post=Post.objects.create(title=form.cleaned_data['title'],
+        #                          content=form.cleaned_data['content'])
+        # post.save()
+
+        # 4
+        post=Post(**self.cleaned_data)
+        if commit:
+            post.save()
+        return post

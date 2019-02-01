@@ -1,8 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import os
-
+from .forms import PostForm
+from .models import Post
 #FBV
+def post_new(request):
+    if request.method=='POST':
+        form=PostForm(request.POST,request.FILES)
+        # is_valid : 모든 vaildator 결과 참이어야 참
+        if form.is_valid():
+            post=form.save()
+
+            return redirect('/dojo/')
+
+    else:
+        form =PostForm()
+    return render(request,'dojo/post_form.html',{
+        'form':form,
+    })
+
 def mysum(request,numbers):
     #HTTP request
     numbers=list(map(lambda x:int(x or 0),numbers.split('/')))
