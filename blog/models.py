@@ -3,7 +3,7 @@ import re
 from django.forms import ValidationError
 from django.conf import settings
 from django.urls import reverse
-from imagekit.models import ImageSpecField
+from imagekit.models import ProcessedImageField,ImageSpecField
 from imagekit.processors import Thumbnail
 
 def lnglat_validator(value):
@@ -22,11 +22,15 @@ class Post(models.Model):
     title = models.CharField(max_length=100,verbose_name='제목',help_text='포스팅 제목을 입력해주세요. 100자 이내.') # 길이 제한 str
     content = models.TextField(verbose_name='내용')
 
-    photo=models.ImageField(blank=True, upload_to='blog/post/%Y/%m/%d') #저장하는 디렉토리를 지정/시간 포함
-    photo_thumbnail=ImageSpecField(source='photo',
-                                   processors=[Thumbnail(300,300)],
-                                   format='JPEG',
-                                   options={'quality':60} )
+    photo = ProcessedImageField(blank=True, upload_to='blog/post/%Y/%m/%d',
+                                       processors=[Thumbnail(300,300)],
+                                       format='JPEG',
+                                       options={'quality':60})
+    # photo=models.ImageField(blank=True, upload_to='blog/post/%Y/%m/%d') #저장하는 디렉토리를 지정/시간 포함
+    # photo_thumbnail=ImageSpecField(source='photo',
+    #                                processors=[Thumbnail(300,300)],
+    #                                format='JPEG',
+    #                                options={'quality':60} )
 
     tags = models.CharField(max_length=100, blank = True)
     lnglat = models.CharField(max_length = 50,
