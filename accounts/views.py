@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 # Create your views here.
 def profile(request):
-    return render(request,'a ccounts/profile.html')
+    return render(request,'accounts/profile.html')
 
 def signup(request):
     if request.method=='POST':
