@@ -19,6 +19,7 @@ from django.urls import path,include
 # from django.conf.urls import include
 from django.conf import settings
 from django.shortcuts import redirect
+from django.conf.urls.static import static
 from django.views.generic import RedirectView
 #
 # def root(request):
@@ -36,6 +37,8 @@ urlpatterns = [
     path('accounts/',include('accounts.urls',namespace='accounts')),
     path('shop/',include('shop.urls',namespace='shop')),
 ]
+
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
