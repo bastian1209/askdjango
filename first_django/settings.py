@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'bootstrap3',
     'debug_toolbar',
     #앱을 추가하지 않으면 안됨, startapp에 붙인 이름
     'accounts',
@@ -133,3 +134,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS=['127.0.0.1']
+
+from django.contrib.messages import constants
+
+MESSAGE_LEVEL= constants.DEBUG #debug 레벨의 메세지를 넘길 수 이씅
+MESSAGE_TAGS = {constants.ERROR:'danger'}
