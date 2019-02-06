@@ -11,6 +11,7 @@ def post_list(request):
     q=request.GET.get('q','')
     if q:
         qs= qs.filter(title__icontains=q)
+
     return render(request, 'blog/post_list.html',{
         'post_list':qs,
         'q':q,
@@ -28,6 +29,8 @@ def post_new(request):
         if form.is_valid():
             post=form.save()
             messages.success(request,'새 포스팅을 저장했습니다.')
+            # messages는 context_processors에 의해 인자로 message를 따로 안넘겨줘도댐
+            # context_processors는 모든 템플릿에서 쓸 변수들을 지정이 된다면 그 변수까지 같이 return 해줌
             return redirect(post) #post.get_absolute_url
     else:
         form=PostForm()
