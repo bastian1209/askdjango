@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import os
 from .forms import PostForm
 from .models import Post
+
 #FBV
 def post_new(request):
     if request.method=='POST':
