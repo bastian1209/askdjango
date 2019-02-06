@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'bootstrap3',
     'debug_toolbar',
+    'imagekit',
     #앱을 추가하지 않으면 안됨, startapp에 붙인 이름
     'accounts',
     'blog',
