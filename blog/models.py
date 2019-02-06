@@ -19,6 +19,7 @@ class Post(models.Model):
     author = models.CharField(max_length=20)
     title = models.CharField(max_length=100,verbose_name='제목',help_text='포스팅 제목을 입력해주세요. 100자 이내.') # 길이 제한 str
     content = models.TextField(verbose_name='내용')
+    photo=models.ImageField(blank=True  )
     tags = models.CharField(max_length=100, blank = True)
     lnglat = models.CharField(max_length = 50,
                               blank = True,
